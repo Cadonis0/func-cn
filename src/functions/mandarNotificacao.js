@@ -2,8 +2,8 @@ const { app } = require('@azure/functions');
 const { CosmosClient } = require('@azure/cosmos');
 require('dotenv').config();
 const client = new CosmosClient({ connectionString: process.env.COSMOS_DB_CONNECTION_STRING });
-const database = client.database('cozinhaComigo');
-const container = database.container('utilizadores');
+const database = client.database('CozinhaConosco');
+const container = database.container('Utilizadores');
 
 app.http('mandarNotificacao', {
     methods: ['POST'],
@@ -13,7 +13,7 @@ app.http('mandarNotificacao', {
         
         try {
 
-            const { resource: utilizador } = await container.item(idDono, idDono).read();
+            const { resource: utilizador } = await container.item(idDono).read();
 
             if (!utilizador) {
                 return {
@@ -38,6 +38,7 @@ app.http('mandarNotificacao', {
                 body: `Notficacao enviada`
             };
         } catch (error) {
+            console.error(error);
             return {
                 status: 400,
                 body: 'Erro a enviar notificacao'
