@@ -34,6 +34,6 @@ jobs:
       with:
         app-name: notficacoesreceitas-testes
         slot-name: Production
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DF38A99DB58343C285AB25F20BEEE8AB }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7FA8136D449A43BF966829947DD0D01C }}
         package: .
 
